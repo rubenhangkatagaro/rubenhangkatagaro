@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard | CAMPUS ALERT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="student">
+
+<div class="app">
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">⚑</div>
+            <span>CAMPUS ALERT</span>
+        </div>
+
+        <p class="menu-label">STUDENT MENU</p>
+
+        <nav>
+            <button class="nav-btn active" data-section="dashboard">
+                🏠 Dashboard
+            </button>
+
+            <button class="nav-btn" data-section="report">
+                📝 Report Problem Room
+            </button>
+
+            <button class="nav-btn" data-section="myreports">
+                📋 My Reports
+            </button>
+
+            <button class="nav-btn" data-section="profile">
+                👤 My Profile
+            </button>
+        </nav>
+
+        <button class="nav-btn logout-btn" id="logoutButton">
+            ↪ Logout
+        </button>
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <h1 id="studentPageTitle">Dashboard</h1>
+                <p>Welcome to your CAMPUS ALERT student portal.</p>
+            </div>
+
+            <div class="user-pill">
+                👤 <span id="studentTopName">Student</span>
+            </div>
+        </header>
+
+        <!-- DASHBOARD -->
+        <section class="page-section" id="dashboardSection">
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-icon">📋</div>
+                    <p>Total Reports</p>
+                    <h2 id="studentTotal">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🕒</div>
+                    <p>Pending</p>
+                    <h2 id="studentPending">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">⚙️</div>
+                    <p>In Progress</p>
+                    <h2 id="studentProgress">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <p>Resolved</p>
+                    <h2 id="studentResolved">0</h2>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div class="card-heading">
+                    <h2>Recent Reports</h2>
+                    <button class="small-btn" data-go="myreports">
+                        View All
+                    </button>
+                </div>
+
+                <div id="studentRecentReports" class="report-list"></div>
+            </div>
+
+            <div class="notice">
+                <strong>Important Reminder:</strong>
+                For emergencies or immediate danger, inform your teacher,
+                school guard, or school authorities directly.
+            </div>
+        </section>
+
+        <!-- REPORT PROBLEM ROOM -->
+        <section class="page-section hidden" id="reportSection">
+            <div class="content-card">
+                <div class="card-heading">
+                    <div>
+                        <h2>Report Problem Room</h2>
+                        <p style="font-size:12px;color:#64748b;margin-top:7px;">
+                            Report a problem inside your school campus.
+                        </p>
+                    </div>
+                </div>
+
+                <form id="reportForm">
+                    <div class="form-grid">
+
+                        <div class="field">
+                            <label for="category">Problem Category *</label>
+                            <select id="category" required>
+                                <option value="">Select Category</option>
+                                <option>Damaged Facilities</option>
+                                <option>Electrical Problem</option>
+                                <option>Water / Plumbing</option>
+                                <option>Cleanliness</option>
+                                <option>Lost and Found</option>
+                                <option>Safety Concern</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="urgency">Urgency Level *</label>
+                            <select id="urgency" required>
+                                <option value="">Select Urgency</option>
+                                <option>Low</option>
+                                <option>Medium</option>
+                                <option>High</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="building">Building *</label>
+                            <input type="text" id="building"
+                                   placeholder="Example: Main Building" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="room">Room Number / Location *</label>
+                            <input type="text" id="room"
+                                   placeholder="Example: Room 201" required>
+                        </div>
+
+                        <div class="field full">
+                            <label for="description">Problem Description *</label>
+                            <textarea id="description" rows="5"
+                                placeholder="Explain the problem..." required></textarea>
+                        </div>
+
+                        <div class="field full">
+                            <label>Upload Photo *</label>
+
+                            <label class="upload-box" for="reportPhoto">
+                                <div class="upload-icon">📷</div>
+                                <strong>Click here to upload a photo</strong>
+                                <p>Upload a clear picture of the reported problem.</p>
+                                <p>JPG, PNG or WEBP — maximum 1 MB</p>
+
+                                <input type="file" id="reportPhoto"
+                                       accept="image/jpeg,image/png,image/webp"
+                                       required>
+
+                                <img id="imagePreview" alt="Photo preview">
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="primary-btn">
+                        SUBMIT REPORT
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- MY REPORTS -->
+        <section class="page-section hidden" id="myreportsSection">
+            <div class="content-card">
+                <div class="card-heading">
+                    <h2>My Reports</h2>
+                </div>
+
+                <div id="myReportsList" class="report-list"></div>
+            </div>
+        </section>
+
+        <!-- PROFILE -->
+        <section class="page-section hidden" id="profileSection">
+            <div class="content-card">
+                <div class="card-heading">
+                    <h2>My Profile</h2>
+                </div>
+
+                <h3 id="profileName">Student Name</h3>
+                <p id="profileId" style="margin-top:10px;color:#64748b;">
+                    Student ID
+                </p>
+                <p style="margin-top:15px;font-size:12px;color:#2563eb;">
+                    STUDENT ACCOUNT
+                </p>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

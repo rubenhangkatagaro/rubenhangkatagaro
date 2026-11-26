@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | CAMPUS ALERT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="admin">
+
+<div class="app">
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">⚑</div>
+            <span>CAMPUS ALERT</span>
+        </div>
+
+        <p class="menu-label">ADMIN MENU</p>
+
+        <nav>
+            <button class="nav-btn active" data-section="dashboard">
+                🏠 Dashboard
+            </button>
+
+            <button class="nav-btn" data-section="reports">
+                📋 Manage Reports
+            </button>
+        </nav>
+
+        <button class="nav-btn logout-btn" id="logoutButton">
+            ↪ Logout
+        </button>
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <h1 id="adminPageTitle">Admin Dashboard</h1>
+                <p>Manage and monitor all student reports.</p>
+            </div>
+
+            <div class="user-pill">
+                🛡️ Administrator
+            </div>
+        </header>
+
+        <!-- ADMIN DASHBOARD -->
+        <section class="page-section" id="dashboardSection">
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-icon">📋</div>
+                    <p>Total Reports</p>
+                    <h2 id="adminTotal">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🕒</div>
+                    <p>Pending</p>
+                    <h2 id="adminPending">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">⚙️</div>
+                    <p>In Progress</p>
+                    <h2 id="adminProgress">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <p>Resolved</p>
+                    <h2 id="adminResolved">0</h2>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div class="card-heading">
+                    <h2>Latest Student Reports</h2>
+                    <button class="small-btn" data-go="reports">
+                        Manage Reports
+                    </button>
+                </div>
+
+                <div id="adminRecentReports" class="report-list"></div>
+            </div>
+        </section>
+
+        <!-- MANAGE REPORTS -->
+        <section class="page-section hidden" id="reportsSection">
+            <div class="content-card">
+                <div class="card-heading">
+                    <h2>Manage Student Reports</h2>
+                </div>
+
+                <div class="field">
+                    <label for="statusFilter">Filter Reports</label>
+                    <select id="statusFilter">
+                        <option value="All">All Reports</option>
+                        <option>Pending</option>
+                        <option>Under Review</option>
+                        <option>In Progress</option>
+                        <option>Resolved</option>
+                        <option>Rejected</option>
+                    </select>
+                </div>
+
+                <div id="adminAllReports" class="report-list"></div>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
